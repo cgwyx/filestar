@@ -22,11 +22,11 @@ RUN echo "export PATH=~/.cargo/bin:$PATH" >> ~/.bashrc
 
 WORKDIR /
 
-RUN git clone https://github.com/filestar-project/lotus.git
-    cd lotus
-    export RUSTFLAGS="-C target-cpu=native -g"
-    export FFI_BUILD_FROM_SOURCE=1
-    make all
+RUN git clone https://github.com/filestar-project/lotus.git && \
+    cd lotus && \
+    export RUSTFLAGS="-C target-cpu=native -g" && \
+    export FFI_BUILD_FROM_SOURCE=1 && \
+    make all && \
     sudo make install
 
 
