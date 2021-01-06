@@ -15,7 +15,7 @@ RUN add-apt-repository ppa:longsleep/golang-backports -y &&\
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y &&\
 
-RUN git clone https://github.com/filestar-project/lotus.git &&\
+RUN git clone https://github.com/filestar-project/lotus/archive/v1.2.2.tar.gz &&\
     cd lotus &&\
     export RUSTFLAGS="-C target-cpu=native -g" &&\
     export FFI_BUILD_FROM_SOURCE=1 &&\
