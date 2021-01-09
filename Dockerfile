@@ -3,7 +3,7 @@ FROM golang:1.14.7-buster AS build-env
 #FROM golang:1.14.2 AS build-env
 
 # branch or tag of the lotus version to build
-ARG BRANCH=v1.2.2
+#ARG BRANCH=v1.2.2
 #ARG BRANCH=interopnet
 # ARG BRANCH=v0.10.2
 
@@ -26,7 +26,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 WORKDIR /
 
-RUN git clone -b $BRANCH https://github.com/filestar-project/lotus.git && \
+RUN git clone https://github.com/filestar-project/lotus/tree/v1.2.2 && \
     cd lotus && \
     export RUSTFLAGS="-C target-cpu=native -g" && \
     export FFI_BUILD_FROM_SOURCE=1 && \
