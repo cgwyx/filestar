@@ -26,7 +26,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 WORKDIR /
 
-RUN git clone https://github.com/filestar-project/lotus.git && \
+RUN git clone https://github.com/filestar-project/lotus.git --recursive && \
     cd lotus && \
     export RUSTFLAGS="-C target-cpu=native -g" && \
     export FFI_BUILD_FROM_SOURCE=1 && \
