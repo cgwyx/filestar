@@ -51,7 +51,7 @@ FROM nvidia/opencl:devel-ubuntu18.04
 RUN apt-get update -y && \
     apt-get install clinfo -y
     
-COPY --from=build-env /lotus /lotus
+COPY --from=build-env /root/lotus /root/lotus
 COPY --from=build-env /etc/ssl/certs /etc/ssl/certs
 #COPY LOTUS_VERSION /VERSION
 
@@ -64,9 +64,9 @@ COPY --from=build-env /lib/x86_64-linux-gnu/libgcc_s.so.1 /lib/libgcc_s.so.1
 #COPY config/config.toml /root/config.toml
 #COPY scripts/entrypoint /bin/entrypoint
 
-RUN ln -s /lotus/lotus /usr/bin/lotus && \
-    ln -s /lotus/lotus-miner /usr/bin/lotus-miner && \
-    ln -s /lotus/lotus-worker /usr/bin/lotus-worker
+RUN ln -s /root/lotus/lotus /usr/bin/lotus && \
+    ln -s /root/lotus/lotus-miner /usr/bin/lotus-miner && \
+    ln -s /root/lotus/lotus-worker /usr/bin/lotus-worker
 
 VOLUME ["/root","/var"]
 
