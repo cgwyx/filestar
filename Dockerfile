@@ -19,8 +19,8 @@ RUN apt update -y && \
 
 
 RUN curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable -y && \
-    /root/.cargo/bin/rustup update beta && \
-    /root/.cargo/bin/rustup update nightly
+    /.cargo/bin/rustup update beta && \
+    /.cargo/bin/rustup update nightly
 ENV PATH=/.cargo/bin:$PATH
 
 #RUN curl -sSf https://sh.rustup.rs | sh -s -- -y
