@@ -1,7 +1,7 @@
 # build container stage
 FROM golang:1.14.7-buster AS build-env
 #FROM golang:1.14.2 AS build-env
-WORKDIR /
+WORKDIR /root
 # branch or tag of the lotus version to build
 #ARG BRANCH=v1.2.2
 #ARG BRANCH=interopnet
@@ -17,11 +17,9 @@ RUN apt update -y && \
     #apt upgrade -y
 #RUN go env -w GOPROXY=https://goproxy.cn
 
+RUN curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable -y
 
-RUN curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable -y && \
-    /.cargo/bin/rustup update beta && \
-    /.cargo/bin/rustup update nightly
-ENV PATH=/.cargo/bin:$PATH
+ENV PATH=/root/.cargo/bin:$PATH
 
 #RUN curl -sSf https://sh.rustup.rs | sh -s -- -y
 #RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
@@ -30,7 +28,7 @@ ENV PATH=/.cargo/bin:$PATH
 
 #######
 
-WORKDIR /
+WORKDIR /root
 
 RUN git clone https://github.com/filestar-project/lotus.git --recursive && \
     cd lotus && \
