@@ -16,10 +16,17 @@ RUN apt update -y && \
     apt install gcc git bzr jq pkg-config mesa-opencl-icd ocl-icd-opencl-dev llvm clang opencl-headers wget -y
     #apt upgrade -y
 #RUN go env -w GOPROXY=https://goproxy.cn
-RUN curl -sSf https://sh.rustup.rs | sh -s -- -y
+
+
+RUN curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable -y && \
+    /root/.cargo/bin/rustup update beta && \
+    /root/.cargo/bin/rustup update nightly
+ENV PATH=/.cargo/bin:$PATH
+
+#RUN curl -sSf https://sh.rustup.rs | sh -s -- -y
 #RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 #RUN echo "export PATH=~/.cargo/bin:$PATH" >> ~/.bashrc
-ENV PATH=/.cargo/bin:$PATH
+
 
 #######
 
