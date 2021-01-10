@@ -1,7 +1,7 @@
 # build container stage
 FROM golang:1.14.7-buster AS build-env
 #FROM golang:1.14.2 AS build-env
-
+WORKDIR /
 # branch or tag of the lotus version to build
 #ARG BRANCH=v1.2.2
 #ARG BRANCH=interopnet
