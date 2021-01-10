@@ -19,7 +19,7 @@ RUN apt update -y && \
 RUN curl -sSf https://sh.rustup.rs | sh -s -- -y
 #RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 #RUN echo "export PATH=~/.cargo/bin:$PATH" >> ~/.bashrc
-ENV PATH=/root/.cargo/bin:$PATH
+ENV PATH=/.cargo/bin:$PATH
 
 #######
 
