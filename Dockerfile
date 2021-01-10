@@ -13,7 +13,7 @@ FROM golang:1.14.7-buster AS build-env
     #apt-get install sudo curl git mesa-opencl-icd ocl-icd-opencl-dev gcc git bzr jq pkg-config -y
 
 RUN apt update -y && \
-    apt install gcc git bzr jq pkg-config mesa-opencl-icd ocl-icd-opencl-dev cargo llvm clang opencl-headers wget -y
+    apt install gcc git bzr jq pkg-config mesa-opencl-icd ocl-icd-opencl-dev llvm clang opencl-headers wget -y
     #apt upgrade -y
 #RUN go env -w GOPROXY=https://goproxy.cn
 RUN curl -sSf https://sh.rustup.rs | sh -s -- -y
