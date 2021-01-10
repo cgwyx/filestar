@@ -9,18 +9,15 @@ FROM golang:1.14.7-buster AS build-env
 
 #RUN echo "Building lotus from branch $BRANCH"
 ########
-#RUN apt-get update -y && \
-#    apt-get install sudo curl git mesa-opencl-icd ocl-icd-opencl-dev gcc git bzr jq pkg-config -y
-########
+RUN apt-get update -y && \
+    apt-get install sudo curl git mesa-opencl-icd ocl-icd-opencl-dev gcc git bzr jq pkg-config -y
 
-########
-
-RUN apt update -y && \
-    apt install gcc git bzr jq pkg-config mesa-opencl-icd ocl-icd-opencl-dev cargo llvm clang opencl-headers wget -y && \
-    apt upgrade -y
-RUN go env -w GOPROXY=https://goproxy.cn
+#RUN apt update -y && \
+    #apt install gcc git bzr jq pkg-config mesa-opencl-icd ocl-icd-opencl-dev cargo llvm clang opencl-headers wget -y && \
+    #apt upgrade -y
+#RUN go env -w GOPROXY=https://goproxy.cn
 #RUN curl -sSf https://sh.rustup.rs | sh -s -- -y
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+#RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 #RUN echo "export PATH=~/.cargo/bin:$PATH" >> ~/.bashrc
 #######
 
