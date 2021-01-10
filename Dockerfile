@@ -30,7 +30,7 @@ RUN git clone https://github.com/filestar-project/lotus.git --recursive && \
     export RUSTFLAGS="-C target-cpu=native -g" && \
     export FFI_BUILD_FROM_SOURCE=1 && \
     make all && \
-    sudo make install
+    make install
 
 
 # runtime container stage
