@@ -1,5 +1,6 @@
 # build container stage
-FROM golang:1.14.7-buster AS build-env
+FROM golang:latest AS build-env
+#FROM golang:1.14.7-buster AS build-env
 #FROM golang:1.14.2 AS build-env
 WORKDIR /root
 # branch or tag of the lotus version to build
