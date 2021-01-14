@@ -10,11 +10,14 @@ WORKDIR /root
 
 #RUN echo "Building lotus from branch $BRANCH"
 ########
+RUN  apt-get update && \
+     apt-get install mesa-opencl-icd ocl-icd-opencl-dev gcc git bzr jq pkg-config curl libclang-dev -y && \
+     apt-get upgrade
+
 #RUN apt-get update -y && \
     #apt-get install sudo curl git mesa-opencl-icd ocl-icd-opencl-dev gcc git bzr jq pkg-config -y
-
-RUN apt update -y && \
-    apt install gcc git bzr jq pkg-config mesa-opencl-icd ocl-icd-opencl-dev llvm clang opencl-headers wget -y
+#RUN apt update -y && \
+    #apt install gcc git bzr jq pkg-config mesa-opencl-icd ocl-icd-opencl-dev llvm clang opencl-headers wget -y
     #apt upgrade -y
 #RUN go env -w GOPROXY=https://goproxy.cn
 
@@ -25,8 +28,6 @@ ENV PATH=/root/.cargo/bin:$PATH
 #RUN curl -sSf https://sh.rustup.rs | sh -s -- -y
 #RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 #RUN echo "export PATH=~/.cargo/bin:$PATH" >> ~/.bashrc
-
-
 #######
 
 WORKDIR /
@@ -87,8 +88,8 @@ EXPOSE 1347/tcp
 # ipfs port
 EXPOSE 4567/tcp
 
-
-ENV IPFS_GATEWAY=https://proof-parameters.s3.cn-south-1.jdcloud-oss.com/ipfs/
+ENV IPFS_GATEWAY=https://filestar-proofs.s3.cn-east-1.jdcloud-oss.com/ipfs/
+# export IPFS_GATEWAY=https://filestar-proofs.s3.cn-east-1.jdcloud-oss.com/ipfs/
 
 ENV FIL_PROOFS_MAXIMIZE_CACHING=1
 
