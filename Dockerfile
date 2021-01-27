@@ -4,7 +4,7 @@ FROM golang:latest AS build-env
 #FROM golang:1.14.2 AS build-env
 WORKDIR /root
 # branch or tag of the lotus version to build
-#ARG BRANCH=v1.2.2
+ARG BRANCH=v1.2.2
 #ARG BRANCH=interopnet
 # ARG BRANCH=v0.10.2
 
@@ -32,7 +32,7 @@ ENV PATH=/root/.cargo/bin:$PATH
 
 WORKDIR /
 
-RUN git clone https://github.com/filestar-project/lotus.git --recursive && \
+RUN git clone -b $BRANCH https://github.com/filestar-project/lotus.git --recursive && \
     cd lotus && \
     export RUSTFLAGS="-C target-cpu=native -g" && \
     export FFI_BUILD_FROM_SOURCE=1 && \
